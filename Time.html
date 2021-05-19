@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Time</title>
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Tic Time</h1>
+        
+        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+        <button id="button-start">Start</button>
+        <button id="button-stop">Stop</button>
+        <button id="button-reset">Reset</button>
+    </div>
+    
+    <style>
+       body{
+           background-color:rgb(104, 211, 175);
+           font-family:  "Times New Roman", Times, serif;
+           height: 100%;
+           
+       }
+       .wrapper {
+           
+           width: 800px;
+           margin: 30px auto;
+           color: black;
+           text-align: center;
+           padding: 10px;
+       }
+
+       h1 {
+           font-family: "Comic Sans MS", "Comic Sans", cursive;
+           font-weight: 200;
+           font-size: 2.6em;
+           text-transform: uppercase;
+           padding: 10px;
+       }
+
+       #seconds, #tens {
+           
+           font-size: 3em;
+           padding: 5px;
+       }
+       button {
+           
+           font-family: "Comic Sans MS", "Comic Sans", cursive;
+           color: rgb(0, 0, 0);
+           border: solid 5px white;
+           text-decoration: none;
+           cursor: pointer;
+           font-size: 1.2em;
+           padding: 18px 10px;
+           width: 180px;
+           margin: 15px;
+            outline: none;
+
+       }
+
+       p {
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+           text-align: center;
+           padding-top: 10px;
+       }
+      
+    </style>
+
+    <script>
+        window.onload = function () {
+  
+            var seconds = 00; 
+            var tens = 00; 
+            var appendTens = document.getElementById("tens")
+            var appendSeconds = document.getElementById("seconds")
+            var buttonStart = document.getElementById('button-start');
+            var buttonStop = document.getElementById('button-stop');
+            var buttonReset = document.getElementById('button-reset');
+            var Interval ;
+          
+            buttonStart.onclick = function() {
+              
+               clearInterval(Interval);
+               Interval = setInterval(startTimer, 10);
+            }
+            
+              buttonStop.onclick = function() {
+                 clearInterval(Interval);
+            }
+            
+          
+            buttonReset.onclick = function() {
+               clearInterval(Interval);
+              tens = "00";
+                seconds = "00";
+              appendTens.innerHTML = tens;
+                appendSeconds.innerHTML = seconds;
+            }
+            
+             
+            
+            function startTimer () {
+              tens++; 
+              
+              if(tens <= 9){
+                appendTens.innerHTML = "0" + tens;
+              }
+              
+              if (tens > 9){
+                appendTens.innerHTML = tens;
+                
+              } 
+              
+              if (tens > 99) {
+                console.log("seconds");
+                seconds++;
+                appendSeconds.innerHTML = "0" + seconds;
+                tens = 0;
+                appendTens.innerHTML = "0" + 0;
+              }
+              
+              if (seconds > 9){
+                appendSeconds.innerHTML = seconds;
+              }
+            
+            }
+            
+          
+          }
+    </script>
+    <p>By Mxtekx</p>
+</body>
+</html>
+
+
